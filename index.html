@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MindEase — Mental Health & Wellness</title>
+  <meta name="description" content="MindEase — calming, minimal mental health and wellness web app." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Small utility to reduce focus outline visual noise while remaining accessible */
+    :focus:not(:focus-visible) { outline: none; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-sky-50 to-blue-50 text-slate-800 antialiased overflow-x-hidden">
+  <!-- Animated Background Layer - Clearly Visible -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none z-0" style="background: linear-gradient(to bottom right, rgb(248, 250, 252), rgb(240, 249, 255), rgb(230, 244, 250));"></div>
+  
+  <!-- Blob 1 -->
+  <div class="blob1 fixed pointer-events-none z-0" style="top: 80px; left: 40px; width: 288px; height: 288px; background: rgb(56, 189, 248); border-radius: 50%; filter: blur(80px); opacity: 0.35; mix-blend-mode: multiply; animation: float1 15s ease-in-out infinite;"></div>
+  
+  <!-- Blob 2 -->
+  <div class="blob2 fixed pointer-events-none z-0" style="top: 160px; right: 80px; width: 384px; height: 384px; background: rgb(45, 212, 191); border-radius: 50%; filter: blur(80px); opacity: 0.3; mix-blend-mode: multiply; animation: float2 18s ease-in-out infinite; animation-delay: 2s;"></div>
+  
+  <!-- Blob 3 -->
+  <div class="blob3 fixed pointer-events-none z-0" style="bottom: 80px; left: 33%; width: 320px; height: 320px; background: rgb(99, 102, 241); border-radius: 50%; filter: blur(80px); opacity: 0.35; mix-blend-mode: multiply; animation: float3 20s ease-in-out infinite; animation-delay: 4s;"></div>
+  
+  <!-- Blob 4 -->
+  <div class="blob4 fixed pointer-events-none z-0" style="top: 50%; right: 25%; width: 256px; height: 256px; background: rgb(34, 211, 238); border-radius: 50%; filter: blur(80px); opacity: 0.3; mix-blend-mode: multiply; animation: float4 16s ease-in-out infinite; animation-delay: 1s;"></div>
+
+  <!-- NAVBAR -->
+  <header class="relative z-30 bg-white/80 backdrop-blur sticky top-0 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <span class="inline-block w-10 h-10 rounded-lg bg-gradient-to-br from-sky-400 to-teal-400 flex items-center justify-center text-white font-semibold">M</span>
+        <span class="font-medium text-lg">MindEase</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#home" class="hover:text-sky-600 transition">Home</a>
+        <a href="#features" class="hover:text-sky-600 transition">Features</a>
+        <a href="#how" class="hover:text-sky-600 transition">How It Works</a>
+        <a href="#testimonials" class="hover:text-sky-600 transition">Testimonials</a>
+      </nav>
+
+      <div class="md:flex items-center gap-4 hidden">
+        <button id="cta-top" data-target="#features" class="bg-sky-600 text-white px-4 py-2 rounded-md shadow hover:bg-sky-700 transition">Start Your Wellness Journey</button>
+      </div>
+
+      <button id="mobile-toggle" aria-controls="mobile-menu" aria-expanded="false" class="md:hidden p-2 rounded-md hover:bg-slate-100 focus:outline-none">
+        <svg id="hamburger" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden hidden border-t">
+      <div class="px-6 py-4 space-y-3">
+        <a href="#home" class="block">Home</a>
+        <a href="#features" class="block">Features</a>
+        <a href="#how" class="block">How It Works</a>
+        <a href="#testimonials" class="block">Testimonials</a>
+        <button id="cta-mobile" data-target="#features" class="w-full mt-2 bg-sky-600 text-white px-4 py-2 rounded-md">Start Your Wellness Journey</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="home" class="relative z-10 max-w-5xl mx-auto px-6 py-12">
+    <!-- HERO -->
+    <section class="grid gap-8 md:grid-cols-2 items-center">
+      <div>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">Your mental health matters.</h1>
+        <p class="mt-4 text-slate-700 max-w-xl">MindEase helps you build small, daily actions to support mental wellbeing — track mood, practice guided breathing, and review progress in a calm, minimal interface.</p>
+        <div class="mt-6 flex gap-3">
+          <button id="hero-cta" data-target="#features" class="bg-teal-500 text-white px-5 py-3 rounded-md shadow hover:bg-teal-600 transition">Start Your Wellness Journey</button>
+          <a href="#how" class="px-5 py-3 rounded-md border border-slate-200 text-slate-700 hover:bg-slate-50 transition">Learn How</a>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-md">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-semibold">Quick actions</h3>
+          <div id="streak-badge" class="flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-sm font-medium text-amber-800">
+            <span class="text-lg">🔥</span>
+            <span id="streak-count">0 days</span>
+          </div>
+        </div>
+        <div class="mt-4 space-y-3">
+          <button id="mood-btn" class="w-full text-left px-4 py-3 rounded-md bg-sky-50 hover:bg-sky-100 transition">How are you feeling today?</button>
+          <div id="mood-feedback" class="text-sm text-slate-600 mt-1" aria-live="polite"></div>
+          <div id="encouragement-message" class="hidden text-sm font-medium text-emerald-700 bg-emerald-50 p-3 rounded-md animate-pulse" role="status" aria-live="assertive"></div>
+
+          <div class="mt-3 p-4 rounded-md bg-gradient-to-r from-sky-50 to-teal-50">
+            <h4 class="text-sm font-medium">Guided Breathing</h4>
+            <p class="text-xs text-slate-600 mt-1">A short, text-guided exercise to reduce stress.</p>
+            <a href="#breathing" class="inline-block mt-3 text-sm text-sky-600 hover:underline">Open breathing tool</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="mt-16">
+      <h2 class="text-2xl font-semibold">Features</h2>
+      <p class="text-slate-600 mt-2">Small, practical tools to support daily mental wellbeing.</p>
+      <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="p-5 bg-white rounded-lg shadow hover:shadow-md transition">
+          <h3 class="font-semibold">Mood Tracker</h3>
+          <p class="text-sm text-slate-600 mt-2">Log moods and see trends over time.</p>
+        </div>
+        <div class="p-5 bg-white rounded-lg shadow hover:shadow-md transition">
+          <h3 class="font-semibold">Guided Breathing</h3>
+          <p class="text-sm text-slate-600 mt-2">Calming breathing exercises for stress relief.</p>
+        </div>
+        <div class="p-5 bg-white rounded-lg shadow hover:shadow-md transition">
+          <h3 class="font-semibold">Daily Check-ins</h3>
+          <p class="text-sm text-slate-600 mt-2">Short prompts to reflect each day.</p>
+        </div>
+        <div class="p-5 bg-white rounded-lg shadow hover:shadow-md transition">
+          <h3 class="font-semibold">Progress Insights</h3>
+          <p class="text-sm text-slate-600 mt-2">Understand patterns and improvements.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mood Modal (hidden) -->
+    <div id="mood-modal" class="fixed inset-0 hidden items-center justify-center z-50" aria-hidden="true">
+      <div class="absolute inset-0 bg-black/40" id="mood-overlay"></div>
+      <div role="dialog" aria-modal="true" class="relative bg-white rounded-xl max-w-md w-full p-6 shadow-lg">
+        <h3 class="text-lg font-semibold">How are you feeling?</h3>
+        <p class="text-sm text-slate-600 mt-1">Choose an option below — there's no right answer.</p>
+        <div class="mt-4 grid grid-cols-2 gap-3">
+          <button class="mood-option p-4 rounded-md bg-emerald-50 hover:bg-emerald-100 transition" data-mood="Happy" aria-label="Happy">😊 <div class="mt-2 text-sm">Happy</div></button>
+          <button class="mood-option p-4 rounded-md bg-sky-50 hover:bg-sky-100 transition" data-mood="Calm" aria-label="Calm">😌 <div class="mt-2 text-sm">Calm</div></button>
+          <button class="mood-option p-4 rounded-md bg-amber-50 hover:bg-amber-100 transition" data-mood="Stressed" aria-label="Stressed">😣 <div class="mt-2 text-sm">Stressed</div></button>
+          <button class="mood-option p-4 rounded-md bg-pink-50 hover:bg-pink-100 transition" data-mood="Anxious" aria-label="Anxious">😟 <div class="mt-2 text-sm">Anxious</div></button>
+        </div>
+        <div class="mt-4 text-right">
+          <button id="mood-close" class="px-4 py-2 rounded-md text-sm bg-slate-100 hover:bg-slate-200 transition">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guided Breathing -->
+    <section id="breathing" class="mt-16 bg-white rounded-2xl p-6 shadow-md">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="text-xl font-semibold">Guided Breathing Exercise</h2>
+          <p class="text-slate-600 mt-1 text-sm">Follow the simple cycle to relax.</p>
+        </div>
+        <button id="breath-sound-toggle" aria-label="Toggle breathing sound" class="flex items-center gap-2 px-3 py-2 rounded-md bg-slate-100 hover:bg-slate-200 transition text-sm" title="Enable/disable sound during breathing">
+          <svg id="sound-icon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.172a1 1 0 011.414 0A6.972 6.972 0 0121 10a6.972 6.972 0 01-4.929 6.828 1 1 0 11-.858-1.846A4.972 4.972 0 0019 10a4.972 4.972 0 00-1.414-3.536 1 1 0 010-1.414 1 1 0 011.414 0zM12.243 4.929a1 1 0 011.414 0A2.973 2.973 0 0115 10a2.973 2.973 0 01-.343 1.357 1 1 0 01-1.714-1.072A.972.972 0 0013 10a.972.972 0 00-.243-.657 1 1 0 010-1.414 1 1 0 011.414 0z" />
+          </svg>
+          <span id="sound-status">On</span>
+        </button>
+      </div>
+      <div class="mt-6 flex flex-col md:flex-row items-center gap-6">
+        <div class="flex-1 text-center">
+          <div id="breath-state" class="text-2xl font-medium text-slate-800">Ready</div>
+          <div id="breath-timer" class="mt-2 text-slate-600">--</div>
+        </div>
+        <div class="w-36 h-36 rounded-full bg-sky-50 flex items-center justify-center">
+          <div id="breath-ring" class="w-24 h-24 rounded-full bg-teal-400/30 transform transition-all"></div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <button id="breath-start" class="bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600 transition">Start</button>
+          <button id="breath-stop" class="bg-slate-100 px-4 py-2 rounded-md hover:bg-slate-200 transition">Stop</button>
+        </div>
+      </div>
+      <p class="mt-4 text-xs text-slate-500">Tip: Breathe slowly and comfortably. Stop anytime.</p>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how" class="mt-16">
+      <h2 class="text-2xl font-semibold">How It Works</h2>
+      <ol class="mt-4 space-y-4 pl-4 list-decimal text-slate-700">
+        <li><strong>Set up:</strong> Create a small, private place to track wellbeing.</li>
+        <li><strong>Track your mood:</strong> Quick daily check-ins to capture how you feel.</li>
+        <li><strong>Improve:</strong> Guided exercises and insights to support progress.</li>
+      </ol>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="mt-16">
+      <h2 class="text-2xl font-semibold">What people say</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-3">
+        <blockquote class="p-5 bg-white rounded-lg shadow">
+          <p class="text-slate-700">"MindEase helped me create a daily habit of checking in — small and manageable."</p>
+          <footer class="mt-3 text-sm text-slate-500">— Alex Rivera, Product Designer</footer>
+        </blockquote>
+        <blockquote class="p-5 bg-white rounded-lg shadow">
+          <p class="text-slate-700">"The breathing tool is a quick reset I can use between meetings."</p>
+          <footer class="mt-3 text-sm text-slate-500">— Priya Sharma, Software Engineer</footer>
+        </blockquote>
+        <blockquote class="p-5 bg-white rounded-lg shadow">
+          <p class="text-slate-700">"Simple, calming design — it actually encourages me to come back."</p>
+          <footer class="mt-3 text-sm text-slate-500">— Jordan Lee, Student</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="mt-16 bg-gradient-to-r from-teal-50 to-sky-50 p-8 rounded-xl text-center">
+      <h2 class="text-xl font-semibold">Take a gentle step today</h2>
+      <p class="text-slate-700 mt-2">Small daily actions add up. MindEase is here to help you start.</p>
+      <div class="mt-4">
+        <button id="final-cta" data-target="#features" class="bg-sky-600 text-white px-6 py-3 rounded-md hover:bg-sky-700 transition">Start Your Wellness Journey</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="relative z-10 mt-12 border-t bg-white/60">
+    <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between gap-6">
+      <div>
+        <h4 class="font-semibold">About MindEase</h4>
+        <p class="text-sm text-slate-600 max-w-md mt-2">A simple, calming toolkit for daily mental wellbeing.</p>
+      </div>
+      <div>
+        <h5 class="font-medium">Contact</h5>
+        <a href="mailto:hello@mindease.example" class="text-sky-600 hover:underline text-sm">hello@mindease.example</a>
+        <p class="text-xs text-slate-500 mt-2">Privacy note: This demo stores no personal data.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MindEase Assistant Chatbot -->
+  <div id="chatbot-widget" class="fixed bottom-6 right-6 z-50">
+    <!-- Floating Chat Button -->
+    <button id="chatbot-toggle" aria-label="Open MindEase Assistant" class="w-14 h-14 rounded-full bg-gradient-to-br from-sky-500 to-teal-500 text-white shadow-lg hover:shadow-xl transition-all hover:scale-110 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+      </svg>
+    </button>
+
+    <!-- Chat Container (hidden by default) -->
+    <div id="chatbot-container" class="absolute bottom-20 right-0 w-96 h-96 bg-white rounded-2xl shadow-2xl hidden overflow-hidden">
+      <!-- Chat Header -->
+      <div class="bg-gradient-to-r from-sky-500 to-teal-500 text-white p-4 flex items-center justify-between">
+        <div>
+          <h3 class="font-semibold">MindEase Assistant</h3>
+          <p class="text-xs opacity-90">Your wellness companion</p>
+        </div>
+        <button id="chatbot-close" aria-label="Close chat" class="text-white hover:bg-white/20 p-1 rounded transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Chat Messages Area -->
+      <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-3 bg-sky-50">
+        <!-- Initial greeting -->
+        <div class="flex justify-start">
+          <div class="bg-white rounded-lg p-3 shadow-sm max-w-xs">
+            <p class="text-sm text-slate-700">Hi there! 👋 I'm your MindEase Assistant. How can I support you today? You can ask about mood tracking, breathing exercises, or just chat.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="border-t bg-white p-4 space-y-2">
+        <!-- Voice Indicator -->
+        <div id="voice-indicator" class="hidden text-xs text-sky-600 font-medium flex items-center gap-1">
+          <span class="inline-block w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+          Listening...
+        </div>
+
+        <!-- Input Container -->
+        <div class="flex gap-2">
+          <input id="chat-input" type="text" placeholder="Type or speak..." class="flex-1 px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" />
+          <button id="voice-btn" aria-label="Voice input" class="px-3 py-2 rounded-lg bg-sky-100 text-sky-600 hover:bg-sky-200 transition" title="Click to speak">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M3 6a3 3 0 013-3h10a1 1 0 01.82 1.573l-7 10A1 1 0 018 18H5a3 3 0 01-3-3V6z" />
+            </svg>
+          </button>
+          <button id="send-btn" aria-label="Send message" class="px-3 py-2 rounded-lg bg-teal-500 text-white hover:bg-teal-600 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5.951-2.976 5.951 2.976a1 1 0 001.169-1.409l-7-14z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tailwind animation styles + Mood-Responsive Animations -->
+  <style>
+    /* ===== DEFAULT (Neutral) Animations ===== */
+    @keyframes float1 {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(80px); }
+    }
+    
+    @keyframes float2 {
+      0%, 100% { transform: translate(0px, 0px); }
+      50% { transform: translate(-60px, 100px); }
+    }
+    
+    @keyframes float3 {
+      0%, 100% { transform: translate(0px, 0px); }
+      50% { transform: translate(80px, -60px); }
+    }
+    
+    @keyframes float4 {
+      0%, 100% { transform: translate(0px, 0px); }
+      50% { transform: translate(-80px, -70px); }
+    }
+
+    /* ===== HAPPY MOOD: Faster, Brighter Motion ===== */
+    @keyframes float1-happy {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(120px); }
+    }
+    
+    @keyframes float2-happy {
+      0%, 100% { transform: translate(0px, 0px); }
+      50% { transform: translate(-80px, 130px); }
+    }
+    
+    @keyframes float3-happy {
+      0%, 100% { transform: translate(0px, 0px); }
+      50% { transform: translate(100px, -80px); }
+    }
+    
+    @keyframes float4-happy {
+      0%, 100% { transform: translate(0px, 0px); }
+      50% { transform: translate(-100px, -100px); }
+    }
+
+    /* ===== CALM MOOD: Slow, Gentle Wave Motion ===== */
+    @keyframes float1-calm {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(40px); }
+    }
+    
+    @keyframes float2-calm {
+      0%, 100% { transform: translate(0px, 0px); }
+      50% { transform: translate(-40px, 50px); }
+    }
+    
+    @keyframes float3-calm {
+      0%, 100% { transform: translate(0px, 0px); }
+      50% { transform: translate(40px, -30px); }
+    }
+    
+    @keyframes float4-calm {
+      0%, 100% { transform: translate(0px, 0px); }
+      50% { transform: translate(-50px, -40px); }
+    }
+
+    /* ===== STRESSED MOOD: Subtle Pulse, Minimal Motion ===== */
+    @keyframes float1-stressed {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(30px) scale(0.95); }
+    }
+    
+    @keyframes float2-stressed {
+      0%, 100% { transform: translate(0px, 0px) scale(1); }
+      50% { transform: translate(-20px, 40px) scale(0.98); }
+    }
+    
+    @keyframes float3-stressed {
+      0%, 100% { transform: translate(0px, 0px) scale(1); }
+      50% { transform: translate(30px, -20px) scale(0.95); }
+    }
+    
+    @keyframes float4-stressed {
+      0%, 100% { transform: translate(0px, 0px) scale(1); }
+      50% { transform: translate(-30px, -30px) scale(0.98); }
+    }
+
+    /* ===== ANXIOUS MOOD: Very Gentle, Slow Motion ===== */
+    @keyframes float1-anxious {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(25px); }
+    }
+    
+    @keyframes float2-anxious {
+      0%, 100% { transform: translate(0px, 0px); }
+      50% { transform: translate(-25px, 35px); }
+    }
+    
+    @keyframes float3-anxious {
+      0%, 100% { transform: translate(0px, 0px); }
+      50% { transform: translate(20px, -25px); }
+    }
+    
+    @keyframes float4-anxious {
+      0%, 100% { transform: translate(0px, 0px); }
+      50% { transform: translate(-35px, -20px); }
+    }
+
+    /* ===== Mood-Specific Blob Styling ===== */
+    
+    /* HAPPY: Bright pastels, faster animations */
+    body.mood-happy .blob1 {
+      animation: float1-happy 10s ease-in-out infinite !important;
+      background: rgb(34, 211, 238) !important;
+      opacity: 0.4 !important;
+    }
+    body.mood-happy .blob2 {
+      animation: float2-happy 12s ease-in-out infinite !important;
+      animation-delay: 1s !important;
+      background: rgb(249, 115, 22) !important;
+      opacity: 0.35 !important;
+    }
+    body.mood-happy .blob3 {
+      animation: float3-happy 14s ease-in-out infinite !important;
+      animation-delay: 3s !important;
+      background: rgb(168, 85, 247) !important;
+      opacity: 0.4 !important;
+    }
+    body.mood-happy .blob4 {
+      animation: float4-happy 11s ease-in-out infinite !important;
+      animation-delay: 0.5s !important;
+      background: rgb(236, 72, 153) !important;
+      opacity: 0.35 !important;
+    }
+
+    /* CALM: Soft blues/teals, slow motion */
+    body.mood-calm .blob1 {
+      animation: float1-calm 25s ease-in-out infinite !important;
+      background: rgb(45, 212, 191) !important;
+      opacity: 0.25 !important;
+    }
+    body.mood-calm .blob2 {
+      animation: float2-calm 28s ease-in-out infinite !important;
+      animation-delay: 3s !important;
+      background: rgb(56, 189, 248) !important;
+      opacity: 0.2 !important;
+    }
+    body.mood-calm .blob3 {
+      animation: float3-calm 30s ease-in-out infinite !important;
+      animation-delay: 5s !important;
+      background: rgb(34, 211, 238) !important;
+      opacity: 0.25 !important;
+    }
+    body.mood-calm .blob4 {
+      animation: float4-calm 26s ease-in-out infinite !important;
+      animation-delay: 2s !important;
+      background: rgb(99, 102, 241) !important;
+      opacity: 0.2 !important;
+    }
+
+    /* STRESSED: Neutral/muted colors, subtle pulsing */
+    body.mood-stressed .blob1 {
+      animation: float1-stressed 20s ease-in-out infinite !important;
+      background: rgb(148, 163, 184) !important;
+      opacity: 0.2 !important;
+    }
+    body.mood-stressed .blob2 {
+      animation: float2-stressed 22s ease-in-out infinite !important;
+      animation-delay: 2s !important;
+      background: rgb(156, 163, 175) !important;
+      opacity: 0.18 !important;
+    }
+    body.mood-stressed .blob3 {
+      animation: float3-stressed 24s ease-in-out infinite !important;
+      animation-delay: 4s !important;
+      background: rgb(203, 213, 225) !important;
+      opacity: 0.2 !important;
+    }
+    body.mood-stressed .blob4 {
+      animation: float4-stressed 21s ease-in-out infinite !important;
+      animation-delay: 1s !important;
+      background: rgb(165, 180, 199) !important;
+      opacity: 0.18 !important;
+    }
+
+    /* ANXIOUS: Muted pastels, very gentle motion */
+    body.mood-anxious .blob1 {
+      animation: float1-anxious 30s ease-in-out infinite !important;
+      background: rgb(100, 116, 139) !important;
+      opacity: 0.18 !important;
+    }
+    body.mood-anxious .blob2 {
+      animation: float2-anxious 32s ease-in-out infinite !important;
+      animation-delay: 4s !important;
+      background: rgb(71, 85, 105) !important;
+      opacity: 0.15 !important;
+    }
+    body.mood-anxious .blob3 {
+      animation: float3-anxious 35s ease-in-out infinite !important;
+      animation-delay: 6s !important;
+      background: rgb(100, 116, 139) !important;
+      opacity: 0.18 !important;
+    }
+    body.mood-anxious .blob4 {
+      animation: float4-anxious 28s ease-in-out infinite !important;
+      animation-delay: 2s !important;
+      background: rgb(71, 85, 105) !important;
+      opacity: 0.15 !important;
+    }
+
+    /* ===== Smooth Transitions Between Moods ===== */
+    .blob1, .blob2, .blob3, .blob4 {
+      transition: background 1.2s ease-out, opacity 1.2s ease-out !important;
+    }
+
+    /* ===== Background Color Transitions per Mood ===== */
+    body {
+      transition: background 1.5s ease-out;
+    }
+
+    /* HAPPY: Warm, bright pastels */
+    body.mood-happy {
+      background: linear-gradient(to bottom right, rgb(255, 248, 240), rgb(255, 250, 235), rgb(255, 251, 235)) !important;
+    }
+
+    /* CALM: Cool blues and teals */
+    body.mood-calm {
+      background: linear-gradient(to bottom right, rgb(240, 249, 255), rgb(232, 245, 255), rgb(225, 242, 252)) !important;
+    }
+
+    /* STRESSED: Neutral, muted tones */
+    body.mood-stressed {
+      background: linear-gradient(to bottom right, rgb(245, 245, 247), rgb(240, 240, 245), rgb(237, 242, 247)) !important;
+    }
+
+    /* ANXIOUS: Soft, cool neutrals */
+    body.mood-anxious {
+      background: linear-gradient(to bottom right, rgb(243, 244, 246), rgb(241, 245, 249), rgb(241, 245, 249)) !important;
+    }
+  </style>
+
+  <script src="script.js"></script>
+</body>
+</html>
