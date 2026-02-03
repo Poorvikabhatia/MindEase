@@ -1,13 +1,18 @@
 # MindEase
 
-MindEase is a calm, minimal single-page web application prototype for mental health and wellness. It provides simple daily tools like mood check-ins, guided breathing exercises, and an AI-like chatbot assistant to build small wellbeing habits.
+MindEase is a frontend mental health and wellness web application designed to help users build healthy daily habits through mood tracking, guided breathing, and supportive conversational guidance.
 
-## Key features
+## Why MindEase?
+
+MindEase is designed around the principle that mental wellbeing improves through small, consistent actions. 
+The app focuses on simplicity, calm visuals, and low-friction interactions to reduce cognitive load and encourage daily engagement without pressure or data collection.
+
+## Core features
 
 - **Mood Tracker**: Quick check-ins with friendly, supportive feedback
 - **Guided Breathing**: Simple Inhale → Hold → Exhale cycles with visual feedback
 - **Daily Check-ins & Progress Insights**: Track patterns and improvements
-- **MindEase Assistant Chatbot**: Frontend-only conversational assistant
+- **MindEase Assistant Chatbot**: Rule-based conversational wellness assistant
   - Text-based messaging for wellness support
   - Voice input using browser-based speech recognition
   - Empathetic, keyword-triggered responses
@@ -21,6 +26,13 @@ MindEase is a calm, minimal single-page web application prototype for mental hea
 - **Tailwind CSS**: Utility-first styling via CDN (soft color palette: blues, teals, lavenders)
 - **Vanilla JavaScript**: Pure frontend interactivity with no dependencies
 - **Web Speech API**: Browser-native voice recognition for voice input
+- **GitHub Pages**: Deployment and live hosting
+
+## Live Demo
+🌐 https://poorvikabhatia.github.io/MindEase/
+
+## Source Code
+🔗 https://github.com/Poorvikabhatia/MindEase
 
 ## Features in detail
 
@@ -57,14 +69,12 @@ MindEase is a calm, minimal single-page web application prototype for mental hea
 - Closing chat by clicking outside or the close button
 - Escape key dismissal where applicable
 
-## UX focus
-
-- Clean, calming visual design with soft, pastel color palette
-- Accessible components (ARIA attributes, keyboard-friendly interactions)
-- Responsive layout with generous spacing for clarity and comfort
-- Non-intrusive animations that enhance rather than distract
-- Emotionally supportive microcopy throughout
-- Modular, easy-to-understand code
+## UI/UX Design Highlights
+- Calm pastel color palette inspired by wellness apps
+- Minimalist layout to reduce mental clutter
+- Micro-interactions for mood selection and breathing guidance
+- Non-intrusive background animations for emotional comfort
+- Accessibility-first design with ARIA labels and keyboard support
 
 ## Usage
 
@@ -82,6 +92,12 @@ MindEase is a calm, minimal single-page web application prototype for mental hea
 - ✅ Voice input: Modern browsers with Web Speech API support
 - ⚠️ Voice input gracefully disabled in older/unsupported browsers
 
+## Future Improvements
+- User accounts and secure mood history tracking
+- Real AI mental health assistant using NLP models
+- Personalized insights and mental health reports
+- Mobile app version using React Native / Flutter
+
 ## File structure
 
 ```
@@ -93,4 +109,4 @@ MindEase/
 
 ---
 
-*MindEase: Small daily actions for big mental health impacts.* 💙
+*MindEase: Small daily actions for meaningful mental health impact.* 💙
